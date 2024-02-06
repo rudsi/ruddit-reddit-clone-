@@ -9,13 +9,15 @@ export default  function RootLayout({ children }: { children: React.ReactNode })
    
   return (
     <html lang="en">
-    <RecoilRoot>
+     <body>
+      <RecoilRoot>
         <ChakraProvider theme={theme}>
           <Layout>
               <div>{children}</div>
           </Layout>
         </ChakraProvider>
-    </RecoilRoot>
+      </RecoilRoot>
+     </body>
     </html>
   );
 }
