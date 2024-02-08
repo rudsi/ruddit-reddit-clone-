@@ -8,16 +8,6 @@ import { authModalState } from "../../../atoms/authModalAtom";
 const AuthButtons: React.FC = () => {
   const setAuthModalState = useSetRecoilState(authModalState);
 
-  const handleLoginClick = () => {
-    console.log("Login button clicked");
-    setAuthModalState({ open: true, view: "login" });
-  };
-  
-  const handleSignupClick = () => {
-    console.log("Signup button clicked");
-    setAuthModalState({ open: true, view: "signup" });
-  };
-
   return (
     <>
       <Button
