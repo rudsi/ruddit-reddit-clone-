@@ -7,11 +7,8 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../../../firebase/clientApp';
 import { FIREBASE_ERRORS } from '@/firebase/errors';
 
-type LoginProps = {
-    toggleView: (view: ModalView) => void;
-};
   
-const Login:React.FC<LoginProps> = () => {
+const Login:React.FC = () => {
     const setAuthModalState = useSetRecoilState(authModalState);
     const [loginForm, setLoginForm] = useState({
         email:"",
