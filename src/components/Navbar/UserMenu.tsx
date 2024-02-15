@@ -1,19 +1,16 @@
 import React from 'react';
-import { Menu, Flex, MenuButton, MenuItem, MenuList, Icon, MenuDivider, Button } from "@chakra-ui/react";
+import { Menu, Flex, MenuButton, MenuItem, MenuList, Icon, MenuDivider,Text } from "@chakra-ui/react";
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { User } from "@firebase/auth";
 import { FaRedditSquare } from 'react-icons/fa';
 import { VscAccount } from 'react-icons/vsc';
 import { CgProfile } from 'react-icons/cg';
 import { MdOutlineLogin } from 'react-icons/md';
 import { auth } from '@/firebase/clientApp';
 import { signOut } from 'firebase/auth';
-import { authModalState } from '@/atoms/authModalAtom';
-import { useRecoilState } from "recoil";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { IoSparkles } from 'react-icons/io5';
 
 const UserMenu: React.FC = () => {
-    const [authModal, setModalState] = useRecoilState(authModalState);
     const [user] = useAuthState(auth);
     return (
         <Menu>
@@ -33,6 +30,21 @@ const UserMenu: React.FC = () => {
                                     color='gray.300'
                                     as={FaRedditSquare}
                                 />
+                                <Flex 
+                                    direction="column"
+                                    display={{base: "none", lg: "flex"}}
+                                    fontSize="8pt"
+                                    align="flex-start"
+                                    mr={8}
+                                    >
+                                    <Text fontWeight={700}>
+                                        {user?.displayName || user.email?.split("@")[0]}
+                                    </Text>
+                                    <Flex>
+                                        <Icon as={IoSparkles} color="brand.100" mr={1} />
+                                        <Text color="gray.400">1 karma</Text>
+                                    </Flex>
+                                </Flex>
                             </>  
                         ) : (
                             <Icon
